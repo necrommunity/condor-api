@@ -51,7 +51,7 @@ $eventData = array(
 $pdo = new PDO("mysql:host=localhost",'necrobot-read','necrobot-read');
 $stmt = $pdo->prepare("SELECT SCHEMA_NAME FROM information_schema.SCHEMATA WHERE SCHEMA_NAME NOT IN ('information_schema', 'performance_schema', 'necrobot', 'mysql');");
 $stmt->execute();
-$databases = $stmt->fetchAll(PDO::FETCH_COLUMN,'Database');
+$databases = $stmt->fetchAll(PDO::FETCH_COLUMN);
 
 if (in_array($schema,$databases)){
   $pdo = new PDO("mysql:host=localhost;dbname=$schema",'necrobot-read','necrobot-read');
