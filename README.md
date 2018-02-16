@@ -5,9 +5,9 @@ JSON API for retrieving match and racer info for CoNDOR events.
 - https://condor.live/api/event
   - Returns information on the most recent CoNDOR event run via CoNDORbot
 ##### Paramaters
-|Name|Description|
-|----------|----------|
-|`/schema_name`|A valid event name|
+|Name|Type|Description|
+|----------|----------|----------|
+|`/schema_name`|Optional|A valid event name|
 
 ## In-progress endpoints:
 - https://condor.live/api/events
