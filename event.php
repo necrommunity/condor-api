@@ -49,7 +49,7 @@ $eventData = array(
 );
 
 $pdo = new PDO("mysql:host=localhost",'necrobot-read','necrobot-read');
-$stmt = $pdo->prepare("show databases;");
+$stmt = $pdo->prepare("SELECT DISTINCT TABLE_SCHEMA FROM information_schema.tables WHERE TABLE_SCHEMA NOT LIKE '%schema%' AND TABLE_SCHEMA NOT LIKE 'necrobot';");
 $stmt->execute();
 $databases = $stmt->fetchAll(PDO::FETCH_COLUMN,'Database');
 
