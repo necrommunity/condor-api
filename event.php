@@ -77,6 +77,7 @@ if (in_array($schema,$databases)){
   $eventData['racers'] = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 } else {
+  header('Content-Type: text/html');
   header("HTTP/1.0 404 Not Found");
   exit;
 }
