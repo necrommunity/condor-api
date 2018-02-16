@@ -77,7 +77,8 @@ if (in_array($schema,$databases)){
   $eventData['racers'] = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 } else {
-  echo "<pre>Input schema is not available.</pre>";
+  header("HTTP/1.0 404 Not Found");
+  exit;
 }
 
 echo json_encode($eventData,JSON_PRETTY_PRINT);
