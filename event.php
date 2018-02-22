@@ -70,9 +70,9 @@ if (in_array($schema,$events['events'])){
   $eventData['event_name'] = $league_info['league_name'];
   $eventData['character'] = $league_info['character'];
 
-  $stmt = $pdo->prepare("select a.rtmp_name 'rtmp', a.twitch_name 'twitch', a.discord_name 'discord' from entrants INNER JOIN necrobot.users a ON a.user_id = entrants.user_id;");
+  $stmt = $pdo->prepare("select a.rtmp_name 'rtmp' from entrants INNER JOIN necrobot.users a ON a.user_id = entrants.user_id;");
   $stmt->execute();
-  $eventData['racers'] = $stmt->fetchAll(PDO::FETCH_ASSOC);
+  $eventData['racers'] = $stmt->fetchAll(PDO::FETCH_COLUMN);
 
 } else {
   header('Content-Type: text/html');
