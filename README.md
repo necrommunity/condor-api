@@ -7,7 +7,7 @@ JSON API for retrieving match and racer info for CoNDOR events.
   ##### Paramaters
   |Name|Type|Description|
   |----------|----------|----------|
-  |`/schema_name`|Optional|A valid event name|
+  |`/schema`|Optional|A valid event name|
 
 - https://condor.live/api/events
   - Returns a list of available events
