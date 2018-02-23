@@ -5,16 +5,7 @@ header('Content-Type: application/json');
 $events = file_get_contents('https://condor.live/api/events');
 $events = json_decode($events, true);
 
-if (!empty($_REQUEST["schema"])) {
-  $schema = $_REQUEST["schema"];
-} elseif (!empty($_REQUEST['req'])) {
-  $schema_req = $_REQUEST['req'];
-  $schema_split = explode('/', $schema_req);
-
-  if (count($schema_split) == 1) {
-    $schema = strtolower($schema_split[0]);
-   }
-} else {
+if (empty($schema)) {
   $configFile = '/home/bot/necrobot/data/condorbot_config';
   $configData = file_get_contents($configFile);
   $rows = explode("\n", $configData);
