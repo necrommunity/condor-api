@@ -31,7 +31,7 @@ $eventData = array(
 
 if (in_array($schema,$events['events'])){
   $pdo = new PDO("mysql:host=localhost;dbname=$schema",'necrobot-read','necrobot-read');
-  $stmt = $pdo->prepare("SELECT m.match_id, DATE_FORMAT(suggested_time, '%Y-%m-%dT%TZ') 'suggested_time', a.rtmp_name 'racer_1', d.racer_1_wins 'racer_1_wins', b.rtmp_name 'racer_2', d.racer_2_wins 'racer_2_wins', c.twitch_name 'commentary', DATE_FORMAT(finish_time, '%Y-%m-%dT%TZ') 'finish_time' FROM matches m INNER JOIN necrobot.users a ON a.user_id=racer_1_id INNER JOIN necrobot.users b ON b.user_id=racer_2_id LEFT JOIN necrobot.users c ON c.user_id=cawmentator_id LEFT JOIN match_info d ON d.match_id=m.match_id WHERE r1_confirmed = 1 AND r2_confirmed = 1 ORDER BY suggested_time ASC;");
+  $stmt = $pdo->prepare("SELECT m.match_id, DATE_FORMAT(suggested_time, '%Y-%m-%dT%TZ') 'suggested_time', a.rtmp_name 'racer_1', a.twitch_name 'racer_1_twitch', d.racer_1_wins 'racer_1_wins', b.rtmp_name 'racer_2', b.twitch_name 'racer_2_twitch', d.racer_2_wins 'racer_2_wins', c.twitch_name 'commentary', DATE_FORMAT(finish_time, '%Y-%m-%dT%TZ') 'finish_time' FROM matches m INNER JOIN necrobot.users a ON a.user_id=racer_1_id INNER JOIN necrobot.users b ON b.user_id=racer_2_id LEFT JOIN necrobot.users c ON c.user_id=cawmentator_id LEFT JOIN match_info d ON d.match_id=m.match_id WHERE r1_confirmed = 1 AND r2_confirmed = 1 ORDER BY suggested_time ASC;");
   $stmt->execute();
   $matches = $stmt->fetchAll(PDO::FETCH_ASSOC);
   $eventData['matches'] = $matches;
